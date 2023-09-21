@@ -1,7 +1,7 @@
 const fs= require('fs');
 
 // Asynchronous way to read file
-
+//
 // console.log("start reading file");
 
 // fs.readFile('input.txt',function(err,data){
@@ -26,29 +26,38 @@ from a file. */
 
 
 // OPENING THE FILE WITH LOW LEVEL 
-// const buf=new Buffer (1024);
+    const buf=new Buffer (1024);
 
-// fs.open('input.txt','r+',function(err,fd){
-//     if(err){
-//         console.log("ERROR IN READING OPENING THE FILE", err);
-//     }
-//     else{
-//         console.log("success in opeing the file");
-//     }
+    fs.open('input.txt','r+',function(err,fd){
+    if(err){
+        console.log("ERROR IN READING OPENING THE FILE", err);
+    }
+    else{
+        console.log("success in opeing the file");
+    }
 
-//     /* The `fs.read()` function is used to read data from a file asynchronously. */
-//     fs.read(fd,buf,0,buf.length,0,function(err,bytes){
-//         if(err){
-//             console("error in reading",err);
-//         }
-//         else{
-//             console.log("SUCCESS IN READING OF FILE");
-//             console.log("data",buf.slice(0,bytes).toString());
-//         }
-//     })
-
-// });
-
+    /* The `fs.read()` function is used to read data from a file asynchronously. */
+    fs.read(fd,buf,0,buf.length,7,function(err,bytes){
+        if(err){
+            console("error in reading",err);
+        }
+        else{
+                console.log("SUCCESS IN READING OF FILE");
+                console.log("data",buf.slice(0,bytes).toString());
+            }
+        });
+    
+        //   How to close the file
+    fs.close(fd,function(err){
+        if(err){
+            console.log('error',err);
+        }
+        else{
+            console.log("success in closing the the file");
+        }
+    })
+});
+    
 
 // // WRITE THE FILE
 // fs.writeFile('input.txt',"updated by demon",function(err){
@@ -70,4 +79,6 @@ from a file. */
 //     }
 // });
 
-fs.appendFileSync('File SYSTEM/input.txt','-- By madara Uchiha');
+
+// sync way
+// fs.appendFileSync('input.txt','-- By madara Uchiha');
