@@ -50,12 +50,24 @@ from a file. */
 // });
 
 
-// WRITE THE FILE
-fs.writeFile('input.txt',"updated by demon",function(err){
-    if(err){
-        console.log(err);
-    }
-    else{
-        console.log("success in writing the file");
-    }
-})
+// // WRITE THE FILE
+// fs.writeFile('input.txt',"updated by demon",function(err){
+//     if(err){
+//         console.log(err);
+//     }
+//     else{
+//         console.log("success in writing the file");
+//     }
+// })
+
+// APPEND THE FILE 
+
+// fs.appendFile('File SYSTEM/input.txt',"-by Nagato",'utf-8',function(err){
+//     if(err){
+//         console.log("ERROR in write the file >",err);
+//     }else{
+//         console.log('SUCCESS IN WRITING THE THE FILE');
+//     }
+// });
+
+fs.appendFileSync('File SYSTEM/input.txt','-- By madara Uchiha');
