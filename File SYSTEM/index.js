@@ -23,25 +23,39 @@ const fs= require('fs');
 /* The line `const buf=new Buffer (1024);` is creating a new buffer object with a size of 1024 bytes.
 Buffers are used to store binary data in Node.js. In this case, it is creating a buffer to read data
 from a file. */
-const buf=new Buffer (1024);
 
-fs.open('input.txt','r+',function(err,fd){
+
+// OPENING THE FILE WITH LOW LEVEL 
+// const buf=new Buffer (1024);
+
+// fs.open('input.txt','r+',function(err,fd){
+//     if(err){
+//         console.log("ERROR IN READING OPENING THE FILE", err);
+//     }
+//     else{
+//         console.log("success in opeing the file");
+//     }
+
+//     /* The `fs.read()` function is used to read data from a file asynchronously. */
+//     fs.read(fd,buf,0,buf.length,0,function(err,bytes){
+//         if(err){
+//             console("error in reading",err);
+//         }
+//         else{
+//             console.log("SUCCESS IN READING OF FILE");
+//             console.log("data",buf.slice(0,bytes).toString());
+//         }
+//     })
+
+// });
+
+
+// WRITE THE FILE
+fs.writeFile('input.txt',"updated by demon",function(err){
     if(err){
-        console.log("ERROR IN READING OPENING THE FILE", err);
+        console.log(err);
     }
     else{
-        console.log("success in opeing the file");
+        console.log("success in writing the file");
     }
-
-    /* The `fs.read()` function is used to read data from a file asynchronously. */
-    fs.read(fd,buf,0,buf.length,0,function(err,bytes){
-        if(err){
-            console("error in reading",err);
-        }
-        else{
-            console.log("SUCCESS IN READING OF FILE");
-            console.log("data",buf.slice(0,bytes).toString());
-        }
-    })
-
 })
