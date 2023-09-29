@@ -26,6 +26,9 @@ from a file. */
 
 
 // OPENING THE FILE WITH LOW LEVEL 
+/* The line `const buf=new Buffer (1024);` is creating a new buffer object with a size of 1024 bytes.
+Buffers are used to store binary data in Node.js. In this case, it is creating a buffer to read data
+from a file. */
     const buf=new Buffer (1024);
 
     fs.open('input.txt','r+',function(err,fd){
@@ -82,3 +85,15 @@ from a file. */
 
 // sync way
 // fs.appendFileSync('input.txt','-- By madara Uchiha');
+
+
+// deleting file
+
+fs.unlink('input.txt',function(err){
+    if(err){
+        console.log("ERROR in Deleting the file",err);
+    }
+    else{
+        console.log("Successfully Deleted File");
+    }
+})
