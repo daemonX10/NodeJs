@@ -9,12 +9,13 @@
 // For more documentation on playgrounds please refer to
 // https://www.mongodb.com/docs/mongodb-vscode/playgrounds/
 
-use('EcommerceDb');
+use('airnb');
 
-db.airnb.insertOne({ city: "New York", price: 100 });
+db.data.find().limit(1);
 
-
-db.airnb.find();
-
-db.getCollectionNames();
-
+db.data.insertMany([{"_id":5,"quantity":5,"price":55,"targetPrice":150},
+{"_id":3,"quantity":6,"price":35,"targetPrice":100},
+{"_id":1,"quantity":10,"price":15,"targetPrice":120},
+{"_id":4,"quantity":5,"price":55,"targetPrice":150},
+{"_id":2,"quantity":5,"price":25,"targetPrice":100}
+]);
