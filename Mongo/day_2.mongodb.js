@@ -11,4 +11,13 @@
 
 use('airnb');
 
-db.data.find();
+db.data.find().limit(1);
+
+db.data.find().limit(1).pretty(); // pretty() is a method to make the output more readable
+
+db.data.find().limit(1).pretty().explain();
+
+db.data.find({}, {name: 1}).limit(7).pretty()
+
+load('Mongo\Thapa Technical MongoDB Import Files\comments.json');
+
