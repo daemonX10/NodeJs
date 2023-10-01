@@ -105,3 +105,37 @@ db.people.updateOne({name:"damodar"},{$set:{"marks.0":100}});
 //{name: 'Tom', age: 28, marks: [{subject: "English", marks: 90},{subject: "Maths", marks: 100},
 // {subject: "Computes", marks: 20}]}
 
+db.people.insertOne({name:"nikesh",age:20,marks:[{subject:"English",marks:81},{subject:"Maths",marks:100},{subject:"Computes",marks:20}]}); // insert
+
+db.people.updateOne({name:"nikesh","marks.subject":"English"},{$set:
+{
+    "marks.$.marks":90
+}});
+
+db.people.find({name:"nikesh"}).pretty();
+
+db.people.deleteOne({name:"nikesh",marks:90});
+
+/* The code `db.people.updateOne({name:"nikesh"},{:{marks:{marks:90}}});` is updating the document
+in the "people" collection where the name is "nikesh". It is using the `` operator to remove an
+element from the "marks" array where the "marks" value is 90. */
+db.people.updateOne({name:"nikesh"},{$pull:{marks:{marks:90}}});
+
+db.people.find({name:"nikesh"}).pretty();
+
+db.people.updateOne({name:"nikesh"},{$pull:{marks:{marks:20}}});
+
+db.people.updateOne({name:"nikesh","marks.subject":"English"},{$set:{"marks.$.marks":90}});
+
+db.student.insertMany([{
+    _id:1,grades:[80,85,90]},{
+    _id:2,gardes:[88,90,92]},{
+    _id:3,gardes:[85,100,90]
+    }]);
+
+db.student.updateOne({_id:1,grades:80},{$set:{"grades.$":82}});
+
+db.student.find();
+
+// Section 2.6: More update operators
+
