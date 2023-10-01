@@ -68,7 +68,7 @@ db.people.find();
 db.people.find({name:"Tom"},{_id:0,age:1,name:2});
 
 use("airnb");
-db.data.find({},{"_id":0,"address":1});
+db.data.find({address:"US"},{"_id":0,"address":1});
 
 db.data.findOne({address:""});
 
@@ -76,5 +76,32 @@ use('airnb');
 db.data.countDocuments();
 
 db.getCollectionNames();
-
 db;
+airnb.data.countDocuments();
+
+db.data.find({address:"US"});
+
+use('airnb')
+db.data.find({}, {_id: false, "address.country": true});
+
+use('airnb')
+db.data.find({'address.country':'United States'},{_id:0,name:1});
+
+use('airnb');
+db.data.find({},{_id:0,name:1}).countDocuments();
+
+db.people.insertOne({name:"damodar",age:28,marks:[50,60,70]});
+
+db.people.find({name:"damodar"}).pretty();
+
+db.people.remove({name:"damodar"});
+
+// Section 2.5: Update of embedded documents
+db.people.update({name:"damodar",marks:50},{$set:{marks:100}}); // update complete marks array with 100
+
+db.people.updateOne({name:"damodar"},{$set:{"marks.0":100}});
+
+// For the following schema: 
+//{name: 'Tom', age: 28, marks: [{subject: "English", marks: 90},{subject: "Maths", marks: 100},
+// {subject: "Computes", marks: 20}]}
+
