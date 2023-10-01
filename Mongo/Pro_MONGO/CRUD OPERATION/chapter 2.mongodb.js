@@ -39,4 +39,4 @@ db.people.find({name:"Laxman"}).pretty();
 db.people.updateMany({age:21},{$set:{age:30,salary:100000,married:false,}});
 
 db.people.replaceOne({name:"God"},{name:"Laxman",age:25,address:"Sri Ram"},{multi:true})
-
+// nothing 
