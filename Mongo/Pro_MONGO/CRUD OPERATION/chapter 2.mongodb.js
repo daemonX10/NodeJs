@@ -39,4 +39,42 @@ db.people.find({name:"Laxman"}).pretty();
 db.people.updateMany({age:21},{$set:{age:30,salary:100000,married:false,}});
 
 db.people.replaceOne({name:"God"},{name:"Laxman",age:25,address:"Sri Ram"},{multi:true})
-// nothing 
+
+
+// # DELETE 
+
+db;
+
+db.people.insertOne({name:"yadav", age:20,college:"Tcet",status:"Non-Working "});
+
+db.people.deleteMany({name:"yadav"});
+
+
+db.people.find({name:"yadav"}).pretty();
+
+db.people.remove({name:"yadav"})
+
+// MongoDB's remove() method. If you execute this command without any argument or without empty argument it will remove all documents from the collection.
+db.people.remove(); 
+db.people.remove({});
+
+// SECTION 2.4 : READ
+
+db.people.find({name:"Tom"});
+
+db.people.find();
+
+// You can also specify which fields to return by passing a field selection parameter. The following will exclude the _id field and only include the age field:
+db.people.find({name:"Tom"},{_id:0,age:1,name:2});
+
+use("airnb");
+db.data.find({},{"_id":0,"address":1});
+
+db.data.findOne({address:""});
+
+use('airnb');
+db.data.countDocuments();
+
+db.getCollectionNames();
+
+db;
