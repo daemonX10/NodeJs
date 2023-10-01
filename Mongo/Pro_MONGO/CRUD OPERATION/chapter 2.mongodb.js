@@ -135,7 +135,44 @@ db.student.insertMany([{
 
 db.student.updateOne({_id:1,grades:80},{$set:{"grades.$":82}});
 
-db.student.find();
+db.people.find();
 
 // Section 2.6: More update operators
+
+db.people.update({name:"nikesh"},{$push:{nicknames:"Golu"}});
+
+db.people.updateOne({name:"nikesh"},{$pull:{nicknames:"Golu"}});
+
+db.people.updateOne({name:"nikesh",nicknames:"Golu"},{$set:{"nicknames.$":"Golululu"}})
+
+db.people.updateOne({name:"nikesh"},{$push:{sibling:["devendra","nikhil","me"]}});
+
+
+db.people.find({name:"nikesh"});
+
+/* The code `db.people.updateOne({name:"nikesh"},{:{sibling:1}});` is updating the document in the
+"people" collection where the name is "nikesh". It is using the `` operator to remove the last
+element from the "sibling" array. */
+db.people.updateOne({name:"nikesh"},{$pop:{sibling:1}});
+
+db.people.updateOne({ _id: ObjectId("6519908b924dd27001862b7b") }, { $pop: { sibling: -1 } })
+
+// Section 2.7: "multi" Parameter while updating multipledocuments
+
+// syntax
+db.people.update(
+    query,
+    update,{
+        upsert:Boolean,
+        multi:Boolean,
+        writeConcern:document
+    }
+)
+
+db.people.update({},{$set:{
+    title:"New mongoDB Tutoria"
+}},{multi:1,upsert:1,writeConcern:1})
+
+db.people.find();
+
 
