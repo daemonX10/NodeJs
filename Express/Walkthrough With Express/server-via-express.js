@@ -9,7 +9,7 @@ app.get('/',(req,res)=>{
 });
 
 app.get('/about',(req,res)=>{
-    res.send("About page");
+    res.send('<h1>About page</h1> <p>Some content</p>');
 });
 
 app.get('/contact',(req,res)=>{
