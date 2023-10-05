@@ -21,5 +21,5 @@ const dbString = 'mongodb+srv://legend:yadav152530@mongo-practice-js.cfemuts.mon
   } catch (error) {
     console.log("ERROR:", error);
     throw error;
-  }
+  } // connection error solve 
 })();
